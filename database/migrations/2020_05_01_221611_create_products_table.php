@@ -19,7 +19,6 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->unsignedInteger('quantity')->default(0);
             $table->double('price');
-            $table->string('image');
             $table->unsignedInteger('category_id');
             $table->timestamps();
         });
