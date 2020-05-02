@@ -17,28 +17,32 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua consequat.',
                 'quantity' => 21,
-                'price' => 200.10
+                'price' => 200.10,
+                'category_id' => 0
             ],
             [
                 'name' => "WOMEN'S BETTER THAN NAKED™ JACKET",
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua consequat.',
                 'quantity' => 400,
-                'price' => 1600.21
+                'price' => 1600.21,
+                'category_id' => 0
             ],
             [
                 'name' => "WOMEN'S SINGLE-TRACK SHOE",
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua consequat.',
                 'quantity' => 37,
-                'price' => 378.00
+                'price' => 378.00,,
+                'category_id' => 1
             ],
             [
                 'name' => 'Enduro Boa® Hydration Pack',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua consequat.',
                 'quantity' => 10,
-                'price' => 21.10
+                'price' => 21.10,
+                'category_id' => 0
             ]
         ];
 
