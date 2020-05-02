@@ -13,8 +13,7 @@
                 </div>
 
                 <div class="card-body text-center">
-                    Welcome to Sportshop! <br>
-                    Happy Shopping!!
+                    Sportshop is the best
                 </div>
             </div>
         </div>
