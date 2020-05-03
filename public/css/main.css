@@ -1,0 +1,20 @@
+.search-bar select {
+  border-radius: 50px 0 0 50px;
+}
+
+.search-bar input {
+  border-radius: 0;
+}
+
+.search-bar .btn-outline-success {
+  background-color: #38c172;
+  color: #fff;
+  border-radius: 0 50px 50px 0;
+  margin-right: 20px;
+}
+
+.search-bar .btn-outline-success:hover {
+  color: #38c172;
+  background-color: #fff;
+}
+
