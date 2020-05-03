@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Cart;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -44,10 +45,40 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('product', ['product' => $product]);
     }
+
+    public function manageSubmit()
+    {
+        $product_id = request('product_id');
+        $user_id = request('user_id');
+        $quantity = request('quantity');
+        $submit = request('submit');
+
+        if($user_id == -1){
+            return redirect("/product/$product_id");
+        }
+
+        if($submit == 'cart'){
+            $cart = new Cart;
+            $cart->product_id = $product_id;
+            $cart->user_id = $user_id;
+            $cart->quantity = $quantity;
+            $cart->save();
+            return redirect("/product/$product_id");
+        }
+
+        if($submit == 'order'){
+            return redirect("/checkout/$product_id/$quantity");
+        }
+
+
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -80,6 +111,5 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
     }
 }

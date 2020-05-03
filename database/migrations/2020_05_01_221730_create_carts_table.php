@@ -17,6 +17,7 @@ class CreateCartsTable extends Migration
             $table->id();
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('quantity')->default(1);
             $table->timestamps();
         });
     }

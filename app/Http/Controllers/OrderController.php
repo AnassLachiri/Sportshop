@@ -14,7 +14,6 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -24,7 +23,15 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $order = new Order;
+        $order->product_id = request('product_id');
+        $order->user_id = request('user_id');
+        $order->quantity = request('quantity');
+        $order->country = request('country');
+        $order->address = request('address');
+        $order->save();
+
+        return redirect('/');
     }
 
     /**

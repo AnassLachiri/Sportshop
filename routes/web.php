@@ -20,3 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/product/{id}', 'ProductController@show');
+Route::get('/product', 'ProductController@manageSubmit')->middleware('auth');
+
+Route::get('/checkout/{id}/{quantity}', 'CheckoutController@show')->middleware('auth');
+
+Route::post('/order','OrderController@create')->middleware('auth');
+
+
