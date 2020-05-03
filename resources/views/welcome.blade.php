@@ -9,6 +9,7 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <img src="/img/sport.png" alt="Sportshop" class="sportshop-icon">
                         SportShop
+                        diiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiib
                     </a>
                 </div>
 
