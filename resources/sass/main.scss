@@ -29,3 +29,39 @@ footer{
     padding: 20px;
 
 }
+
+/************** Product styling *********************/
+
+.product {
+    margin-top: 20px;
+}
+
+.product img{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.product .product-info{
+    padding: 10px
+}
+
+.product .product-info select{
+    padding: 3px 10px;
+    background-color: #fff;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
+.product .product-info .btn{
+    padding: 10px 50px;
+    margin: 10px 20px;
+}
+
+/************** Checkout styling *********************/
+
+.checkout-form{
+    padding: 10px ;
+    margin-top: 20px;
+}
+
