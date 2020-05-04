@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Product;
 
 class CategoryController extends Controller
 {
@@ -44,9 +45,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
-    {
-        //
+    public function show($category_id){
+        $products = Product::all();
+        return view('category', ['products' => $products,'category_id'=>$category_id]);
+         
     }
 
     /**
@@ -82,4 +84,7 @@ class CategoryController extends Controller
     {
         //
     }
+
+
+
 }
