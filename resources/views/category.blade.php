@@ -1,46 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-@foreach($products as $product) 
-@if($product->category_id == $category_id)
 <div class="container">
-    <div class="row justify-content-center product">
-        <div class="col-md-5 image">
-            <img src="/img/product_img/{{$product->id}}.jpg" alt="Product">
-        </div>
-        <div class="col-md-7">
-            <form action="/product/" method="POST" class="product-info" id="product-form">
-            @csrf
-            <h3 class="product-title">{{ $product->name }}</h3>
-            <p class="product-description">{{ $product->description }}</p><br>
+    <div class="row justify-content-center product-category">
 
-            Quantity available : {{ $product->quantity }}<br>
-            Price : {{ $product->price }}$<br>
-            <label for="quantity">Choose your quantity :</label>
-            <select name="quantity" id="quantity" class="product-quantity">
-                @for($i = 1; $i <= $product->quantity; $i++)
-                <option value="{{ $i }}"> {{ $i }} </option>
-                @endfor
-            </select><br><br>
-
-            @auth
-            <input type="text" name="user_id" value="{{ Auth::id() }}" style="display:none;">
-            <input type="text" name="product_id" value="{{ $product->id }}" style="display:none;">
-
-            @else
-            <input type="text" name="user_id" value="-1" style="display:none;">
-            <input type="text" name="product_id" value="{{ $product->id }}" style="display:none;">
-            @endauth
+    @foreach($products as $product)
+    @if($product->category_id == $category_id)
 
 
-            <button type="submit" class="btn btn-primary order-btn" name="submit" value="order">Order Now</button>
-            <button type="submit" class="btn btn-primary order-btn" name="submit" value="cart">Add to cart</button>
+    <div class="col-md-3">
+	<figure class="card card-product">
+		<div class="img-wrap" style="background-size: cover; background-image: url('/img/product_img/{{$product->id}}.jpg');">
 
-            </form>
-        </div>
+		</div>
+		<figcaption class="info-wrap">
+			<h6 class="title text-dots"><a href="/product/{{$product->id}}">{{ $product->name }}</a></h6>
+			<div class="action-wrap">
+				<a href="/product/{{$product->id}}" class="btn btn-primary btn-sm float-right"> See The Product </a>
+				<div class="price-wrap h5">
+					<span class="price-new">$ {{ $product->price }}</span>
+				</div> <!-- price-wrap.// -->
+			</div> <!-- action-wrap -->
+		</figcaption>
+	</figure> <!-- card // -->
+</div>
+
+
+    @endif
+    @endforeach
+
     </div>
 </div>
-@endif
-@endforeach
 
 @endsection

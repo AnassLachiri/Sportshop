@@ -33,4 +33,4 @@ Route::get('/orders', 'OrderController@index')->middleware('auth');
 Route::get('/cart', 'CartController@index')->middleware('auth');
 
 
-route::get('/categories/{category_id}','CategoryController@show');
+route::get('/category/{category_id}','CategoryController@show');
