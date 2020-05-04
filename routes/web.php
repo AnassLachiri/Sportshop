@@ -34,3 +34,6 @@ Route::get('/cart', 'CartController@index')->middleware('auth');
 
 
 route::get('/category/{category_id}','CategoryController@show');
+
+route::get('/admin','AdminController@index')->middleware('admin');
+
