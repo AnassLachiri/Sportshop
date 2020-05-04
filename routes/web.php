@@ -36,4 +36,8 @@ Route::get('/cart', 'CartController@index')->middleware('auth');
 route::get('/category/{category_id}','CategoryController@show');
 
 route::get('/admin','AdminController@index')->middleware('admin');
+route::get('/admin/products','AdminController@productsIndex')->middleware('admin');
+route::get('/admin/orders','AdminController@ordersIndex')->middleware('admin');
+route::get('/admin/categories','AdminController@categoriesIndex')->middleware('admin');
+route::get('/admin/users','AdminController@usersIndex')->middleware('admin');
 

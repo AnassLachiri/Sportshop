@@ -8,9 +8,10 @@
     @if($product->category_id == $category_id)
 
 
+
     <div class="col-md-3">
 	<figure class="card card-product">
-		<div class="img-wrap" style="background-size: cover; background-image: url('/img/product_img/{{$product->id}}.jpg');">
+		<div class="img-wrap" style="background-size: cover; background-position: center; background-image: url('/img/product_img/{{$product->id}}.jpg');">
 
 		</div>
 		<figcaption class="info-wrap">
