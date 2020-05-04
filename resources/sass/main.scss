@@ -65,3 +65,27 @@ footer{
     margin-top: 20px;
 }
 
+
+
+/************** Orders styling *********************/
+
+
+.order{
+    border: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+.order .image{
+    margin: 0;
+}
+
+.order img{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.order .delivered, .order .pending{
+    max-width: 300px;
+    text-align: center;
+}

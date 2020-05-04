@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\Product;
 use Illuminate\Http\Request;
+use Auth;
+use App\Cart;
 
 class OrderController extends Controller
 {
@@ -15,6 +17,10 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $orders = Order::where('user_id' , Auth::id() )->orderBy('created_at', 'desc')->get();
+        $products = Product::All();
+
+        return view('orders',['orders' => $orders, 'products' => $products]);
     }
 
     /**
@@ -31,6 +37,13 @@ class OrderController extends Controller
         $order->country = request('country');
         $order->address = request('address');
         $order->save();
+
+        $cart_items = Cart::where('product_id',request('product_id'))->where('user_id', request('user_id'))->get();
+        if(count($cart_items)!=0){
+            foreach($cart_items as $cart_item){
+                $cart_item->delete();
+            }
+        }
 
         $product = Product::findOrFail(request('product_id'));
         $product->quantity = ($product->quantity - $order->quantity);
@@ -56,9 +69,9 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show()
     {
-        //
+
     }
 
     /**

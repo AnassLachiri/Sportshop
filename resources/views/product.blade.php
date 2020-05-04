@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row justify-content-center product">
         <div class="col-md-5 image">
-            <img src="/img/product_img/ball.jpg" alt="Product">
+            <img src="/img/product_img/{{$product->id}}.jpg" alt="Product">
         </div>
         <div class="col-md-7">
-            <form action="/product/" method="GET" class="product-info" id="product-form">
+            <form action="/product/" method="POST" class="product-info" id="product-form">
             @csrf
             <h3 class="product-title">{{ $product->name }}</h3>
             <p class="product-description">{{ $product->description }}</p><br>
