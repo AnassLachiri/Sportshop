@@ -13,7 +13,7 @@
 
     <div class="card order">
     <div class="card-header text-center">
-        {{ $i + 1 }} - {{ $products[$cart[$i]['product_id']-1]['name'] }}
+        <a href="/product/{{ $cart[$i]['product_id'] }}">{{ $i + 1 }} - {{ $products[$cart[$i]['product_id']-1]['name'] }}</a>
     </div>
     <div class="card-body">
         <div class="row">
@@ -21,16 +21,20 @@
                 <img src="/img/product_img/{{$products[$cart[$i]['product_id']-1]['id']}}.jpg" alt="Product">
             </div>
             <div class="col-md-9">
+                <p class="card-title">
+                {{$products[$cart[$i]['product_id']-1]['description']}}
+                </p>
                 <p class="card-text">
                     Quantity wanted : {{ $cart[$i]['quantity'] }}<br>
                     Total price : {{ $cart[$i]['quantity'] * $products[$cart[$i]['product_id']-1]['price'] }}$<br>
                 </p>
                 <form action="/product" method="POST" class="checkout">
                 @csrf
-                    <input type="text" name="quantity" value="{{ Auth::id() }}" style="display:none;">
+                    <input type="text" name="quantity" value="{{ $cart[$i]['quantity'] }}" style="display:none;">
+                    <input type="text" name="origin" value="cart" style="display:none;">
                     <input type="text" name="user_id" value="{{ Auth::id() }}" style="display:none;">
                     <input type="text" name="product_id" value="{{ $cart[$i]['product_id'] }}" style="display:none;">
-                    <button type="submit" class="btn btn-primary order-btn" name="submit" value="order">Order Now</button>
+                    <button type="submit" class="btn btn-primary order-btn" name="submit" value="order">Checkout this order Now</button>
                 </form>
             </div>
         </div>

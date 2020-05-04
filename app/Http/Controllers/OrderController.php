@@ -30,26 +30,46 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $order = new Order;
-        $order->product_id = request('product_id');
-        $order->user_id = request('user_id');
-        $order->quantity = request('quantity');
-        $order->country = request('country');
-        $order->address = request('address');
-        $order->save();
 
-        $cart_items = Cart::where('product_id',request('product_id'))->where('user_id', request('user_id'))->get();
-        if(count($cart_items)!=0){
-            foreach($cart_items as $cart_item){
-                $cart_item->delete();
+        if(request('origin')=='cart'){
+            $cart_items = Cart::where('product_id',request('product_id'))->where('user_id', request('user_id'))->get();
+            if(count($cart_items)!=0){
+                foreach($cart_items as $cart_item){
+                    $cart_item->delete();
+                }
             }
         }
 
         $product = Product::findOrFail(request('product_id'));
-        $product->quantity = ($product->quantity - $order->quantity);
+
+        if( ($product->quantity - request('quantity')) < 0){
+            return view('checkout', ['product' => $product, 'quantity' => $product->quantity, 'sold_out' => True]);
+        }
+
+        $product->quantity = ($product->quantity - request('quantity'));
         $product->save();
 
-        return redirect('/');
+        $orders = Order::where('product_id',request('product_id'))
+                        ->where('user_id', request('user_id'))
+                        ->where('address', request('address'))
+                        ->where('country', request('country'))->get();
+        if(count($orders)!=0){
+            foreach($orders as $order){
+                $order->quantity = $order->quantity + request('quantity');
+                $order->save();
+            }
+        }else{
+            $order = new Order;
+            $order->product_id = request('product_id');
+            $order->user_id = request('user_id');
+            $order->quantity = request('quantity');
+            $order->country = request('country');
+            $order->address = request('address');
+            $order->save();
+        }
+
+
+        return redirect("/product/$order->product_id");
     }
 
     /**

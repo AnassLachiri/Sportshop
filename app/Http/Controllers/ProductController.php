@@ -64,16 +64,25 @@ class ProductController extends Controller
         }
 
         if($submit == 'cart'){
-            $cart = new Cart;
-            $cart->product_id = $product_id;
-            $cart->user_id = $user_id;
-            $cart->quantity = $quantity;
-            $cart->save();
-            return redirect("/product/$product_id");
-        }
 
-        if($submit == 'order'){
-            return redirect("/checkout/$product_id/$quantity");
+            $cart_items = Cart::where('product_id',$product_id)->where('user_id', $user_id)->get();
+            if(count($cart_items)!=0){
+                $cart_items[0]->quantity = $cart_items[0]->quantity + $quantity;
+                $cart_items[0]->save();
+            }else{
+                $cart = new Cart;
+                $cart->product_id = $product_id;
+                $cart->user_id = $user_id;
+                $cart->quantity = $quantity;
+                $cart->save();
+            }
+            return redirect("/product/$product_id");
+        }elseif($submit == 'order'){
+            if(request('origin') == 'cart'){
+                return redirect("/checkout/$product_id/$quantity")->with('origin', 'cart');
+            }else{
+                return redirect("/checkout/$product_id/$quantity");
+            }
         }
 
 

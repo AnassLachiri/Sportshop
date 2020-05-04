@@ -13,7 +13,7 @@
 
     <div class="card order">
     <div class="card-header text-center">
-        {{ $i + 1 }} - {{ $products[$orders[$i]['product_id']-1]['name'] }}
+    <a href="/product/{{ $orders[$i]['product_id'] }}">{{ $i + 1 }} - {{ $products[$orders[$i]['product_id']-1]['name'] }}</a>
     </div>
     <div class="card-body">
         <div class="row">
@@ -25,7 +25,9 @@
                 {{$products[$orders[$i]['product_id']-1]['description']}}
                 </p>
                 <p class="card-text">
-                    Quantity wanted : {{ $orders[$i]['quantity'] }}<br>
+                Address : {{ $orders[$i]['address'] }}<br>
+                Country : {{ $orders[$i]['country'] }}<br>
+                Quantity wanted : {{ $orders[$i]['quantity'] }}<br>
                     Total price : {{ $orders[$i]['quantity'] * $products[$orders[$i]['product_id']-1]['price'] }}$<br>
                 </p>
                 @if($orders[$i]['is_delivered'])
