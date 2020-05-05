@@ -113,6 +113,8 @@ footer {
 .card-product .title {
   margin-top: 0; }
 
+
+
 /*********************** Admin Styling ***********************/
 
 .card-counter{
@@ -176,5 +178,51 @@ footer {
   }
 
 
-/********************* Admin Products ****************************/
+/********************* welcome Products ****************************/
+
+.welcome-header{
+    width: 100%;
+    height: 400px;
+    background-image: url('/img/welcome_img/header.jpg');
+    background-size: cover;
+    margin-top: -30px;
+    text-align: center;
+}
+
+.welcome-header .blackish{
+    background-color: rgba(0, 0, 0, .7);
+    width: 100%;
+    height: 100%;
+    color: #EEE;
+}
+
+.welcome-header .blackish .welcome-text{
+    padding-top: 150px;
+    font-size: 70px;
+}
+
+
+.card-product .img-cat{
+    height: 330px;
+}
+
+.card-product .img-cat .whitish{
+    background-color: rgba(255, 255, 255, .7);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding: 130px 0;
+}
+
+.card-product .img-cat .whitish a{
+    text-decoration: none;
+    font-size: 50px;
+    font-weight: bolder;
+    color: #333;
+}
+
+.category-name a{
+    color: #222;
+}
+
 
