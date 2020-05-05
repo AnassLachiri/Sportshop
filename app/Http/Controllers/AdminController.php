@@ -74,4 +74,22 @@ class AdminController extends Controller
         return view('admin-users', ['users' => $users, 'products' => $products, 'orders' => $orders,
         'categories' => $categories]);
     }
+
+    public function permissionUser($id){
+        $state = request('state');
+        $user = User::findOrFail($id);
+        if($state=='normal'){
+            $user->is_admin = FALSE;
+        }elseif($state=='admin'){
+            $user->is_admin = TRUE;
+        }
+        $user->save();
+        return back();
+    }
+
+    public function destroyUser($id){
+        $user = User::findOrFail($id);
+        $user->delete();
+        return back();
+    }
 }

@@ -41,7 +41,6 @@
 
 
 <div class="container">
-<hr>
 <div class="row admin-order">
     <div class="col-md-1" >Id</div>
     <div class="col-md-4">Product Name</div>

@@ -37,9 +37,58 @@
   </div>
 </div>
 
-@foreach($products as $product)
+
+<h1 class="products-title text-center">All Users</h1>
+
+<div class="container">
+<div class="row admin-user">
+    <div class="col-md-1">Id</div>
+    <div class="col-md-5">Email</div>
+    <div class="col-md-2">Name</div>
+    <div class="col-md-2">User type</div>
+    <div class="col-md-1">Delete</div>
+    <div class="col-md-1">ChangeTo</div>
+</div>
 
 
+@foreach($users as $user)
+@if($user->id != Auth::id())
+<hr><div class="row admin-user">
+    <div class="col-md-1">{{ $user->id }}</div>
+    <div class="col-md-5"><a href="/admin/user/{{ $user->id }}">{{ $user->email }}</a></div>
+    <div class="col-md-2"><a href="/admin/user/{{ $user->id }}">{{ $user->name }}</a></div>
+    <div class="col-md-2">
+        @if ($user->is_admin)
+        Admin
+        @else
+        Normal user
+        @endif
+    </div>
+    <div class="col-md-1">
+    <form action="/delete/user/{{$user->id}}" method="POST" class="porduct-delete">
+        @csrf
+        <button type="submit" class="btn btn-danger float-left"><i class="fa fa-trash-o"></i></button>
+    </form>
+    </div>
+    <div class="col-md-1">
+        @if ($user->is_admin)
+        <form action="/permission/user/{{$user->id}}" method="POST" class="porduct-delete">
+            @csrf
+            <input type="text" name="state" value="normal" style="display: none;">
+            <button type="submit" class="btn btn-primary float-left">Normal</button>
+        </form>
+        @else
+        <form action="/permission/user/{{$user->id}}" method="POST" class="porduct-delete">
+            @csrf
+            <input type="text" name="state" value="admin" style="display: none;">
+            <button type="submit" class="btn btn-success float-left">Admin</button>
+        </form>
+        @endif
+    </div>
+</div>
+@endif
 @endforeach
+<hr></div>
+
 
 @endsection
