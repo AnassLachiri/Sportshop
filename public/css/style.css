@@ -226,3 +226,22 @@ footer {
 }
 
 
+/**************************** Admin products styling ***************************/
+
+.products-title{
+    margin: 30px auto 10px;
+}
+.admin-product .product-img{
+    background-size: cover;
+}
+
+.admin-product .product-btns{
+    padding-top: 20px;
+
+}
+
+.admin-product .btn{
+    padding: 10px;
+    margin: 10px;
+}
+

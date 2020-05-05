@@ -39,3 +39,5 @@ route::get('/admin/orders','AdminController@ordersIndex')->middleware('admin');
 route::get('/admin/categories','AdminController@categoriesIndex')->middleware('admin');
 route::get('/admin/users','AdminController@usersIndex')->middleware('admin');
 
+route::post('/delete/product/{id}', 'ProductController@destroy')->middleware('admin');
+

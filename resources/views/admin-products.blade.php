@@ -37,9 +37,33 @@
   </div>
 </div>
 
+<h1 class="products-title text-center">All products</h1>
+
+<div class="container">
 @foreach($products as $product)
-
-
+<hr><div class="row admin-product">
+    <div class="col-md-2 product-img" style="background-image: url('/img/product_img/{{$product->id}}.jpg');"></div>
+    <div class="col-md-8 product-text">
+        <h3 class="product-name"><a href="/product/{{$product->id}}">{{$product->name}}</a></h3>
+        <p class="product-description">{{ $product->description }}</p>
+        Quantity In Stock : {{$product->quantity}}
+    </div>
+    <div class="col-md-2 product-btns">
+    <a href="/admin/product/{{$product->id}}" class="porduct-modify"><button type="submit" class="btn btn-primary float-left"><i class="fa fa-cog"></i></button></a>
+    <form action="/delete/product/{{$product->id}}" method="POST" class="porduct-delete">
+        @csrf
+        <button type="submit" class="btn btn-danger float-left"><i class="fa fa-trash-o"></i></button>
+    </form>
+    </div>
+</div>
 @endforeach
+</div><hr>
+
+<div class="container">
+
+
+</div>
+
+
 
 @endsection
