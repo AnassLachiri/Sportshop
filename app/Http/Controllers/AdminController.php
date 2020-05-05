@@ -39,8 +39,18 @@ class AdminController extends Controller
         $orders = Order::all();
         $categories = Category::all();
 
+        for($i = 0 ; $i < count( $orders ) ; $i++){
+            $infos[$i]['id'] = $orders[$i]->id;
+            $infos[$i]['product_id'] = $orders[$i]->product_id;
+            $infos[$i]['product_name'] = Product::findOrFail($orders[$i]->product_id)->name;
+            $infos[$i]['user_id'] = $orders[$i]->user_id;
+            $infos[$i]['user_name'] = User::findOrFail($orders[$i]->user_id)->name;
+            $infos[$i]['quantity'] = $orders[$i]->quantity;
+            $infos[$i]['is_delivered'] = $orders[$i]->is_delivered;
+        }
+
         return view('admin-orders', ['users' => $users, 'products' => $products, 'orders' => $orders,
-        'categories' => $categories]);
+        'categories' => $categories, 'infos' => $infos]);
     }
 
     public function categoriesIndex()

@@ -254,3 +254,9 @@ footer {
     text-align: center;
 }
 
+/************************ Admin orders page *****************************/
+
+.admin-order-header{
+    padding-top: 20px;
+}
+

@@ -37,9 +37,45 @@
   </div>
 </div>
 
-@foreach($products as $product)
+<h1 class="products-title text-center">All Orders</h1>
+
+
+<div class="container">
+<hr>
+<div class="row admin-order">
+    <div class="col-md-1" >Id</div>
+    <div class="col-md-4">Product Name</div>
+    <div class="col-md-2">User</div>
+    <div class="col-md-2">Quantity</div>
+    <div class="col-md-2">State</div>
+    <div class="col-md-1"></div>
+</div>
+</div>
+
+
+<div class="container">
+@foreach($infos as $info)
+
+
+<hr>
+<div class="row admin-order">
+    <div class="col-md-1">{{ $info['id'] }}</div>
+    <div class="col-md-4"><a href="/product/{{ $info['product_id'] }}">{{$info['product_name']}}</a></div>
+    <div class="col-md-2"><a href="/admin/user/{{ $info['user_id'] }}">{{$info['user_name']}}</a></div>
+    <div class="col-md-2">{{ $info['quantity'] }}</div>
+    <div class="col-md-2">
+        @if ($info['is_delivered'])
+        Delivred
+        @else
+        Pending
+        @endif
+    </div>
+    <div class="col-md-1"><a href="/admin/order/{{$info['id']}}" class="porduct-modify"><i class="fa fa-cog"></i></a></div>
+</div>
+
 
 
 @endforeach
+<hr></div>
 
 @endsection
