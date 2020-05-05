@@ -25,7 +25,7 @@
 
             <div class="col-md-3">
                 <figure class="card card-product">
-                    <div class="img-wrap" style="background-size: cover; background-position: center; background-image: url('/img/product_img/{{ $products[$i][$j]->id }}.jpg');">
+                    <div class="img-wrap" style="background-size: cover; background-position: center; background-image: url('/storage/product_images/{{ $products[$i][$j]->image }}');">
 
                     </div>
                     <figcaption class="info-wrap">
@@ -46,7 +46,7 @@
 
             <div class="col-md-3">
                 <figure class="card card-product">
-                    <div class="img-wrap" style="background-size: cover; background-position: center; background-image: url('/img/product_img/{{ $products[$i][$j]->id }}.jpg');">
+                    <div class="img-wrap" style="background-size: cover; background-position: center; background-image: url('/storage/product_images/{{ $products[$i][$j]->image }}');">
 
                     </div>
                     <figcaption class="info-wrap">

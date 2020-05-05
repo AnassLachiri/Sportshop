@@ -37,12 +37,17 @@
   </div>
 </div>
 
+
+
+
+
+
 <h1 class="products-title text-center">All products</h1>
 
 <div class="container">
 @foreach($products as $product)
 <hr><div class="row admin-product">
-    <div class="col-md-2 product-img" style="background-image: url('/img/product_img/{{$product->id}}.jpg');"></div>
+    <div class="col-md-2 product-img" style="background-image: url('/storage/product_images/{{$product->image}}');"></div>
     <div class="col-md-8 product-text">
         <h3 class="product-name"><a href="/product/{{$product->id}}">{{$product->name}}</a></h3>
         <p class="product-description">{{ $product->description }}</p>
@@ -59,9 +64,30 @@
 @endforeach
 <hr></div>
 
+
+
+
 <div class="container new-product">
     <h1 class="new-product-title">Add new Product</h1>
-<form>
+<form action="/create/product/" method="POST" enctype="multipart/form-data">
+@csrf
+        @if ($message = Session::get('error'))
+        <div class="form-group">
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ session('error') }}</strong>
+            </div>
+        </div>
+        @endif
+
+        @if ($message = Session::get('success'))
+        <div class="form-group">
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ session('success') }}</strong>
+            </div>
+        </div>
+        @endif
   <div class="form-group">
     <label for="product-name">Product Name</label>
     <input type="text" class="form-control" id="product-name" placeholder="Product name" name="name">
@@ -74,17 +100,17 @@
     <label for="product-category">Product Category</label>
     <select class="form-control" id="product-category" name="category">
         @foreach($categories as $category)
-        <option value="{{ $category->name }}">{{ $category->name }}</option>
+        <option value="{{ $category->id }}">{{ $category->name }}</option>
       @endforeach
     </select>
   </div>
   <div class="form-group">
     <label for="product-quantity">Product Quantiy</label>
-    <input type="number" class="form-control" id="product-quantity" placeholder="Product quantity" name="quantity">
+    <input type="number" min="0" class="form-control" id="product-quantity" placeholder="Product quantity" name="quantity">
   </div>
   <div class="form-group">
     <label for="product-price">Product Price ( in $ )</label>
-    <input type="number" class="form-control" id="product-price" placeholder="Product price" name="price">
+    <input type="number" step="any" min="0" class="form-control" id="product-price" placeholder="Product price" name="price">
   </div>
   <div class="form-group">
     <label for="product-image">Product Image ( jpg )</label>

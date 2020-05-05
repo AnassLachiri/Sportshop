@@ -10,25 +10,27 @@
     </div>
     @else
     @for ($i = 0; $i < count($orders); $i++)
+    @for ($j = 0; $j < count($products); $j++)
+    @if ($products[$j]['id'] == $orders[$i]['product_id'])
 
     <div class="card order">
     <div class="card-header text-center">
-    <a href="/product/{{ $orders[$i]['product_id'] }}">{{ $i + 1 }} - {{ $products[$orders[$i]['product_id']-1]['name'] }}</a>
+    <a href="/product/{{ $orders[$i]['product_id'] }}">{{ $i + 1 }} - {{ $products[$j]['name'] }}</a>
     </div>
     <div class="card-body">
         <div class="row">
             <div class="col-md-3">
-                <img src="/img/product_img/{{$products[$orders[$i]['product_id']-1]['id']}}.jpg" alt="Product">
+                <img src="/storage/product_images/{{$products[$j]['image']}}" alt="Product">
             </div>
             <div class="col-md-9">
                 <p class="card-title">
-                {{$products[$orders[$i]['product_id']-1]['description']}}
+                {{$products[$j]['description']}}
                 </p>
                 <p class="card-text">
                 Address : {{ $orders[$i]['address'] }}<br>
                 Country : {{ $orders[$i]['country'] }}<br>
                 Quantity wanted : {{ $orders[$i]['quantity'] }}<br>
-                    Total price : {{ $orders[$i]['quantity'] * $products[$orders[$i]['product_id']-1]['price'] }}$<br>
+                    Total price : {{ $orders[$i]['quantity'] * $products[$j]['price'] }}$<br>
                 </p>
                 @if($orders[$i]['is_delivered'])
                 <div class="alert alert-success delivered" role="alert">
@@ -44,7 +46,8 @@
     </div>
     </div>
 
-
+    @endif
+    @endfor
     @endfor
 
     @endif

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -25,7 +26,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -36,7 +36,45 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+            'image' => 'image|required',
+        ]);
+
+
+        $pr = Product::where('name',request('name'))->get();
+
+
+        if(count( $pr ) > 0){
+            return back()
+            ->with('error','This product exists in the database already!!');
+        }elseif(!$request->hasFile('image')){
+            return back()
+            ->with('error','This product must have an image!!');
+        }else{
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename .'_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/product_images', $fileNameToStore);
+        }
+
+        $product = new Product;
+        $product->name = request('name');
+        $product->description = request('description');
+        $product->category_id = request('category');
+        $product->price = request('price');
+        $product->quantity = request('quantity');
+        $product->image = $fileNameToStore;
+        $product->save();
+
+        return back()
+            ->with('success','You have successfully upload image.');
     }
 
     /**
@@ -121,6 +159,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
+
+        Storage::delete( 'public/product_images/'. $product->image );
+
         $product->delete();
 
         return redirect('/admin/products');

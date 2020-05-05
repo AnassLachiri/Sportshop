@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center product">
         <div class="col-md-5 image">
-            <img src="/img/product_img/{{$product->id}}.jpg" alt="Product">
+            <img src="/storage/product_images/{{$product->image}}" alt="Product">
         </div>
         <div class="col-md-7">
             <form action="/product/" method="POST" class="product-info" id="product-form">
