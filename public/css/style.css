@@ -245,3 +245,12 @@ footer {
     margin: 10px;
 }
 
+.new-product{
+    margin: 40px auto;
+}
+
+.new-product-title{
+    margin: 40px auto 20px;
+    text-align: center;
+}
+

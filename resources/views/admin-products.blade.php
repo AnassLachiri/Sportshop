@@ -57,10 +57,41 @@
     </div>
 </div>
 @endforeach
-</div><hr>
+<hr></div>
 
-<div class="container">
-
+<div class="container new-product">
+    <h1 class="new-product-title">Add new Product</h1>
+<form>
+  <div class="form-group">
+    <label for="product-name">Product Name</label>
+    <input type="text" class="form-control" id="product-name" placeholder="Product name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="product-description">Product Description</label>
+    <textarea class="form-control" id="product-description" rows="3" name="description"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="product-category">Product Category</label>
+    <select class="form-control" id="product-category" name="category">
+        @foreach($categories as $category)
+        <option value="{{ $category->name }}">{{ $category->name }}</option>
+      @endforeach
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="product-quantity">Product Quantiy</label>
+    <input type="number" class="form-control" id="product-quantity" placeholder="Product quantity" name="quantity">
+  </div>
+  <div class="form-group">
+    <label for="product-price">Product Price ( in $ )</label>
+    <input type="number" class="form-control" id="product-price" placeholder="Product price" name="price">
+  </div>
+  <div class="form-group">
+    <label for="product-image">Product Image ( jpg )</label>
+    <input type="file" class="form-control-file" id="product-image" name="image">
+  </div>
+  <button type="submit" class="btn btn-primary" name="submit">Add Product</button>
+</form>
 
 </div>
 
