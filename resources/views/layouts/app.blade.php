@@ -45,12 +45,11 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">
-                                    Clothes
+                                @foreach($categories as $category)
+                                <a class="dropdown-item" href="/category/{{$category->id}}">
+                                    {{$category->name}}
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    Equipements
-                                </a>
+                                @endforeach
                             </div>
                         </li>
                     </ul>
@@ -58,12 +57,14 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                            <form class="form-inline search-bar">
+                            <form class="form-inline search-bar" action="/search" method="GET">
                                 <select name="category" class="category-filter custom-select">
-                                    <option value="clothes">Clothes</option>
-                                    <option value="equipements">Equipements</option>
+                                    <option value="all">All Categories</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
                                 </select>
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search_text">
                                 <button class="btn btn-outline-success" type="submit">
                                 <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
@@ -87,6 +88,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if( Auth::user()->is_admin )
+                                <a href="/admin" class="dropdown-item">Admin Dashboard</a>
+                                @endif
                                 <a href="/orders" class="dropdown-item">My Orders</a>
                                 <a href="/cart" class="dropdown-item">My Cart</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
