@@ -6,6 +6,7 @@ use App\Product;
 use App\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use DateTime;
 
 class ProductController extends Controller
 {
@@ -74,8 +75,46 @@ class ProductController extends Controller
         $product->save();
 
         return back()
-            ->with('success','You have successfully upload image.');
+            ->with('success','You have successfully upload new product.');
     }
+
+
+    public function modify(Request $request)
+    {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+            'image' => 'image',
+            'id' => 'required'
+        ]);
+
+        $product = Product::findOrFail(request('id'));
+
+        if($request->hasFile('image')){
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename .'_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/product_images', $fileNameToStore);
+            $product->image = $fileNameToStore;
+        }
+
+        $product->name = request('name');
+        $product->description = request('description');
+        $product->category_id = request('category');
+        $product->price = request('price');
+        $product->quantity = request('quantity');
+        $product->updated_at = new DateTime;
+        $product->save();
+
+        return back()
+            ->with('success','You have successfully modified the product.');
+    }
+
 
     /**
      * Display the specified resource.
