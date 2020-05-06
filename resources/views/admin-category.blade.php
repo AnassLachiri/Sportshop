@@ -40,62 +40,9 @@
 
 
 
-<h1 class="products-title text-center">All Orders</h1>
-
-
-<div class="container">
-@if ($message = Session::get('delete_error'))
-        <div class="form-group">
-            <div class="alert alert-danger alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ session('delete_error') }}</strong>
-            </div>
-        </div>
-        @endif
-<div class="row admin-order">
-    <div class="col-md-1">Image</div>
-    <div class="col-md-3">Category Id</div>
-    <div class="col-md-6">Category Id</div>
-    <div class="col-md-1">Modify</div>
-    <div class="col-md-1">Delete</div>
-</div>
-</div>
-
-
-<div class="container">
-@foreach($categories as $category)
-
-
-<hr>
-<div class="row admin-order">
-    <div class="col-md-1" style="background-image: url(/storage/category_images/{{ $category['image'] }});background-size: cover; background-position: center;"></div>
-    <div class="col-md-3">{{ $category['id'] }}</div>
-    <div class="col-md-6"><a href="/category/{{ $category['id'] }}">{{$category['name']}}</a></div>
-    <div class="col-md-1">
-    <a href="/admin/category/{{$category['id']}}" class="porduct-modify"><button type="submit" class="btn btn-primary float-left"><i class="fa fa-cog"></i></button></a>
-    </div>
-    <div class="col-md-1">
-    <form action="/delete/category/{{$category['id']}}" method="POST" class="porduct-delete">
-        @csrf
-        <button type="submit" class="btn btn-danger float-left"><i class="fa fa-trash-o"></i></button>
-    </form>
-    </div>
-</div>
-
-
-
-@endforeach
-<hr></div>
-
-
-
-
-
-
-
 <div class="container new-product">
-    <h1 class="new-product-title">Add new Category</h1>
-<form action="/create/category/" method="POST" enctype="multipart/form-data">
+    <h1 class="new-product-title">Modify the Category</h1>
+<form action="/modify/category/" method="POST" enctype="multipart/form-data">
 @csrf
 
 
@@ -120,13 +67,14 @@
 
   <div class="form-group">
     <label for="category-name">Category Name</label>
-    <input type="text" class="form-control" id="product-name" placeholder="Category name" name="name">
+    <input type="text" class="form-control" id="product-name" placeholder="Category name" name="name" value="{{ $category->name }}">
   </div>
 
   <div class="form-group">
     <label for="category-image">Category Image</label>
     <input type="file" class="form-control-file" id="category-image" name="image">
   </div>
+  <input type="text" name="id" value="{{$category->id}}" style="display: none;">
   <button type="submit" class="btn btn-primary" name="submit">Add Category</button>
 </form>
 

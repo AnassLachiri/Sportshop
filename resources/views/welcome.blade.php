@@ -69,7 +69,7 @@
 
             <div class="col-md-3">
                 <figure class="card card-product">
-                    <div class="img-cat" style="background-size: cover; background-position: center; background-image: url('/img/product_img/2.jpg');">
+                    <div class="img-cat" style="background-size: cover; background-position: center; background-image: url('/storage/category_images/{{ $categories[$i]->image }}');">
                         <div class="whitish">
                             <a href="/category/{{ $categories[$i]->id }}">More +</a>
                         </div>

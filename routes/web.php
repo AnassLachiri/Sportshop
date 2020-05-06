@@ -49,3 +49,11 @@ route::get('/admin/product/{id}', 'AdminController@productIndex')->middleware('a
 route::post('/modify/product/', 'ProductController@modify')->middleware('admin');
 
 route::post('/create/category/', 'CategoryController@store')->middleware('admin');
+route::post('/delete/category/{id}', 'CategoryController@destroy')->middleware('admin');
+
+route::get('/admin/category/{id}', 'AdminController@categoryIndex')->middleware('admin');
+route::post('/modify/category/', 'CategoryController@modify')->middleware('admin');
+
+
+
+

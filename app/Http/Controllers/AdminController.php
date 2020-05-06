@@ -76,6 +76,19 @@ class AdminController extends Controller
         'categories' => $categories]);
     }
 
+    public function categoryIndex($id)
+    {
+        $users = User::all();
+        $products = Product::all();
+        $orders = Order::all();
+        $categories = Category::all();
+
+        $category = Category::findOrFail($id);
+
+        return view('admin-category', ['users' => $users, 'products' => $products, 'orders' => $orders,
+        'categories' => $categories, 'category'=> $category]);
+    }
+
     public function usersIndex()
     {
         $users = User::all();

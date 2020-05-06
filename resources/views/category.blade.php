@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <h1 class="category-title text-center">{{ $category_name }} - All Products</h1>
     <div class="row justify-content-center product-category">
 
     @foreach($products as $product)

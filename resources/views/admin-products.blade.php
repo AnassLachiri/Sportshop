@@ -113,7 +113,7 @@
     <input type="number" step="any" min="0" class="form-control" id="product-price" placeholder="Product price" name="price">
   </div>
   <div class="form-group">
-    <label for="product-image">Product Image ( jpg )</label>
+    <label for="product-image">Product Image</label>
     <input type="file" class="form-control-file" id="product-image" name="image">
   </div>
   <button type="submit" class="btn btn-primary" name="submit">Add Product</button>
