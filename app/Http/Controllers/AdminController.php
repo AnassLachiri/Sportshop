@@ -114,7 +114,24 @@ class AdminController extends Controller
 
     public function destroyUser($id){
         $user = User::findOrFail($id);
+
+        $orders = Order::All();
+        foreach($orders as $order){
+            if($order->user_id == $id){
+                $order->delete();
+            }
+        }
+
+        $carts = Cart::All();
+        foreach($carts as $cart){
+            if($cart->user_id == $id){
+                $cart->delete();
+            }
+        }
+
         $user->delete();
-        return back();
+        return back()
+        ->with('success',"The user is deleted successfully!!");
+
     }
 }

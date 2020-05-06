@@ -77,7 +77,7 @@
     <div class="col-md-1">
     <form action="/delete/category/{{$category['id']}}" method="POST" class="porduct-delete">
         @csrf
-        <button type="submit" class="btn btn-danger float-left"><i class="fa fa-trash-o"></i></button>
+        <button type="submit" class="btn btn-danger float-left" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i></button>
     </form>
     </div>
 </div>

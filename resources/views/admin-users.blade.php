@@ -41,6 +41,16 @@
 <h1 class="products-title text-center">All Users</h1>
 
 <div class="container">
+
+        @if ($message = Session::get('success'))
+        <div class="form-group">
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ session('success') }}</strong>
+            </div>
+        </div>
+        @endif
+
 <div class="row admin-user">
     <div class="col-md-1">Id</div>
     <div class="col-md-5">Email</div>
@@ -67,7 +77,7 @@
     <div class="col-md-1">
     <form action="/delete/user/{{$user->id}}" method="POST" class="porduct-delete">
         @csrf
-        <button type="submit" class="btn btn-danger float-left"><i class="fa fa-trash-o"></i></button>
+        <button type="submit" class="btn btn-danger float-left" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i></button>
     </form>
     </div>
     <div class="col-md-1">

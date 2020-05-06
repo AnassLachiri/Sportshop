@@ -57,7 +57,7 @@
     <a href="/admin/product/{{$product->id}}" class="porduct-modify"><button type="submit" class="btn btn-primary float-left"><i class="fa fa-cog"></i></button></a>
     <form action="/delete/product/{{$product->id}}" method="POST" class="porduct-delete">
         @csrf
-        <button type="submit" class="btn btn-danger float-left"><i class="fa fa-trash-o"></i></button>
+        <button type="submit" class="btn btn-danger float-left" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i></button>
     </form>
     </div>
 </div>
