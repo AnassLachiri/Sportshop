@@ -48,3 +48,4 @@ route::post('/delete/user/{id}', 'AdminController@destroyUser')->middleware('adm
 route::get('/admin/product/{id}', 'AdminController@productIndex')->middleware('admin');
 route::post('/modify/product/', 'ProductController@modify')->middleware('admin');
 
+route::post('/create/category/', 'CategoryController@store')->middleware('admin');

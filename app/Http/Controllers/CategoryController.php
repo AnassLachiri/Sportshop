@@ -36,7 +36,34 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+        'name'=>'required',
+        'image'=>'image|nullable|max:2000'
+        ]);
+        
+        if($request->hasFile('image')){
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+            $extension = $request->file('image')->getClientOriginalExtension();
+
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+
+            $path = $request->file('image')->storeAs('public/image', $fileNameToStore);
+
+
+        } else {
+            $fileNameToStore='No_image.jpg';
+        }
+
+        $cat = new Category;
+        $cat->name = $request->input('name');
+        $cat->image = $fileNameToStore;
+        $cat->save(); 
+
+
+
     }
 
     /**

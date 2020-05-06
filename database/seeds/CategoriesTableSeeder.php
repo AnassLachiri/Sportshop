@@ -14,11 +14,14 @@ class CategoriesTableSeeder extends Seeder
     {
         $cat1 = new Category;
         $cat1->name = "Equipements";
+        $cat1->image= 'No_image.jpg';
         $cat1->save();
+        
 
 
         $cat2 = new Category;
         $cat2->name = "Clothes";
+        $cat2->image= 'No_image.jpg';
         $cat2->save();
     }
 }

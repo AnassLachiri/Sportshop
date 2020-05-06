@@ -36,27 +36,93 @@
     </div>
   </div>
 </div>
+<div>
 
+
+
+
+
+
+
+
+
+
+@for($i=0;$i < 60 ;$i++)
+&nbsp;
+@endfor
+</div>
+
+<link href="/css/main.css" rel="stylesheet">
+
+<h1 class="new-product-title">All the categories</h1>
 @foreach($categories as $category)
-<h1 class="products-title text-center">the category: {{$category->name}}</h1>
-@foreach($products as $product)
-@if($category->id == $product->category_id)
-<hr><div class="row admin-product">
-    <div class="col-md-2 product-img" style="background-image: url('/img/product_img/{{$product->id}}.jpg');"></div>
-    <div class="col-md-8 product-text">
-        <h3 class="product-name"><a href="/product/{{$product->id}}">{{$product->name}}</a></h3>
-        <p class="product-description">{{ $product->description }}</p>
-        Quantity In Stock : {{$product->quantity}}
-    </div>
-    <div class="col-md-2 product-btns">
-    <a href="/admin/product/{{$product->id}}" class="porduct-modify"><button type="submit" class="btn btn-primary float-left"><i class="fa fa-cog"></i></button></a>
-    <form action="/delete/product/{{$product->id}}" method="POST" class="porduct-delete">
-        @csrf
-        <button type="submit" class="btn btn-danger float-left"><i class="fa fa-trash-o"></i></button>
-    </form>
+&nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+<div class="container">
+<li class="list-group-item">
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-3">
+        
+            <div class="customDivxx"><img src="/storage/image/{{$category->image}}" class="img-circleimg-responsive" alt="" /></div>
+
+            
+        </div>
+        <div class="col-md-3">
+          &nbsp;
+                &nbsp;
+                &nbsp;
+            <div class="customDiv">the category: {{$category->name}}</div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="customDiv">
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+            <button type="button" class="btn btn-primary btn-lg" title="Edit">modify</button>
+            <button type="button" class="btn btn-danger btn-lg" title="Delete">delete</button>
+            
+            </div>
+        </div>
     </div>
 </div>
-@endif
+</li>
+</div>
 @endforeach
-@endforeach
+
+
+<div>
+@for($i=0;$i < 10 ;$i++)
+&nbsp;
+@endfor
+</div>
+
+
+
+<div class="container new-product">
+    <h1 class="new-product-title">Add new Category</h1>
+<form action="/create/category/" method="POST" enctype="multipart/form-data">
+@csrf
+        
+
+        
+  <div class="form-group">
+    <label for="category-name">Category Name</label>
+    <input type="text" class="form-control" id="product-name" placeholder="Category name" name="name">
+  </div>
+  
+  <div class="form-group">
+    <label for="category-image">Category Image ( type: jpg et taille: 80x80 )</label>
+    <input type="file" class="form-control-file" id="category-image" name="image">
+  </div>
+  <button type="submit" class="btn btn-primary" name="submit">Add Category</button>
+</form>
+
+</div>
+
 @endsection
