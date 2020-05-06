@@ -55,6 +55,7 @@ route::get('/admin/category/{id}', 'AdminController@categoryIndex')->middleware(
 route::post('/modify/category/', 'CategoryController@modify')->middleware('admin');
 
 route::get('/admin/order/{id}', 'OrderController@orderIndex')->middleware('admin');
+route::get('/admin/order/{id}', 'OrderController@Index')->middleware('admin');
 
 
-
+route::get('/search', 'ProductController@searchIndex')->middleware('admin');

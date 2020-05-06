@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Cart;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use DateTime;
@@ -15,9 +16,25 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function searchIndex(Request $request)
     {
-        //
+        $this->validate($request, [
+            'category' => 'required',
+            'search_text' => 'required',
+        ]);
+
+        $category = request('category');
+        $search_text = request('search_text');
+        $products = [];
+
+        if($category == 'all'){
+            $products = Product::where('name', 'LIKE', '%'.$search_text.'%')->get();
+        }else{
+            $category_id = Category::findOrFail($category)->id;
+            $products = Product::where('category_id', $category_id)->where('name', 'LIKE', '%'.$search_text.'%')->get();
+        }
+
+        return view('search', ['products' => $products, 'search_text' => $search_text]);
     }
 
     /**

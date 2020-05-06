@@ -52,12 +52,12 @@
         @endif
 
 <div class="row admin-user">
-    <div class="col-md-1">Id</div>
-    <div class="col-md-5">Email</div>
-    <div class="col-md-2">Name</div>
-    <div class="col-md-2">User type</div>
-    <div class="col-md-1">Delete</div>
-    <div class="col-md-1">ChangeTo</div>
+    <div class="col-md-1"><strong>Id</strong></div>
+    <div class="col-md-5"><strong>Email</strong></div>
+    <div class="col-md-2"><strong>Name</strong></div>
+    <div class="col-md-2"><strong>User type</strong></div>
+    <div class="col-md-1"><strong>Delete</strong></div>
+    <div class="col-md-1"><strong>ChangeTo</strong></div>
 </div>
 
 
@@ -65,8 +65,8 @@
 @if($user->id != Auth::id())
 <hr><div class="row admin-user">
     <div class="col-md-1">{{ $user->id }}</div>
-    <div class="col-md-5"><a href="/admin/user/{{ $user->id }}">{{ $user->email }}</a></div>
-    <div class="col-md-2"><a href="/admin/user/{{ $user->id }}">{{ $user->name }}</a></div>
+    <div class="col-md-5">{{ $user->email }}</div>
+    <div class="col-md-2">{{ $user->name }}</div>
     <div class="col-md-2">
         @if ($user->is_admin)
         Admin

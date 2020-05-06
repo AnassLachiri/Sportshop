@@ -115,14 +115,14 @@ class AdminController extends Controller
     public function destroyUser($id){
         $user = User::findOrFail($id);
 
-        $orders = Order::All();
+        $orders = Order::all();
         foreach($orders as $order){
             if($order->user_id == $id){
                 $order->delete();
             }
         }
 
-        $carts = Cart::All();
+        $carts = Cart::all();
         foreach($carts as $cart){
             if($cart->user_id == $id){
                 $cart->delete();
