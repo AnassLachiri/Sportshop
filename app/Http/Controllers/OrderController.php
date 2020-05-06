@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use App\Cart;
+use App\Category;
+
 
 class OrderController extends Controller
 {
@@ -126,5 +129,23 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function orderIndex($id){
+        $users = User::all();
+        $products = Product::all();
+        $orders = Order::all();
+        $categories = Category::all();
+        
+
+        $order = Order::findOrFail($id);
+        $product= Product::findOrFail($order->product_id);
+        $user= User::findOrFail($order->user_id);
+
+
+
+        return view('admin-order', ['users' => $users, 'products' => $products, 'orders' => $orders, 'categories' => $categories,'order'=>$order,'prod'=>$product,'use'=>$user]);
+        
+
     }
 }
