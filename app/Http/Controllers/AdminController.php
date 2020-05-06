@@ -49,6 +49,7 @@ class AdminController extends Controller
         $products = Product::all();
         $orders = Order::all();
         $categories = Category::all();
+        $infos = [];
 
         for($i = 0 ; $i < count( $orders ) ; $i++){
             $infos[$i]['id'] = $orders[$i]->id;

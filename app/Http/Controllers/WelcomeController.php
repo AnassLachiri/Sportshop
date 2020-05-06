@@ -11,6 +11,7 @@ class WelcomeController extends Controller
     public function index()
     {
         $categories = Category::All();
+        $products = [];
 
         for($i = 0; $i<count($categories); $i++){
             $products[$i] = Product::where('category_id', $categories[$i]->id)->get();
