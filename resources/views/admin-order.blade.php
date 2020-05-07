@@ -37,61 +37,48 @@
   </div>
 </div>
 
-
-
-
-<h1 class="products-title text-center">All Orders</h1>
-
-
 <div class="container">
-<div class="row admin-order">
-    <div class="col-md-1" >Id</div>
-    <div class="col-md-2">Product Name</div>
-    <div class="col-md-2">Quantity</div>
-    <div class="col-md-2">User</div>
-    <div class="col-md-2">Adresse</div>
-    <div class="col-md-2">Order state</div>
-    
-</div>
-</div>
 
-
-<div class="container">
-@foreach($orders as $ord)
-@if($ord->id = $order->id)
-
-<hr>
-<div class="row admin-order">
-    <div class="col-md-1">
-    {{ $ord['id'] }}
+    <div class="card order">
+    <div class="card-header text-center">
+    <a href="/product/{{ $product->id }}">{{ $product->name }}</a>
     </div>
-
-    <div class="col-md-2">
-    <a href="/product/{{ $prod['product_id'] }}">{{$prod['name']}}</a>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="/storage/product_images/{{ $product->image }}" alt="Product">
+                @if(!$order->is_delivered)
+                <form action="/delete/order/{{$order->id}}" method="POST" class="porduct-delete order-deliver-form">
+                    @csrf
+                    <button type="submit" class="btn btn-danger float-left" onclick="return confirm('Are you sure?')">Deliver Order Now</button>
+                </form>
+                @endif
+            </div>
+            <div class="col-md-9">
+                <p class="card-title">
+                {{ $product->description }}
+                </p>
+                <p class="card-text">
+                Address : {{ $product->address }}<br>
+                Country : {{ $product->country }}<br>
+                Quantity wanted : {{ $order->quantity }}<br>
+                Total price : {{ ($order->quantity * $product->price) }}$<br>
+                User : {{ $user->name }}<br>
+                Email : {{ $user->email }}<br>
+                </p>
+                @if($order->is_delivered)
+                    <div class="alert alert-success delivered" role="alert">
+                    Product Delivred
+                    </div>
+                @else
+                    <div class="alert alert-primary pending" role="alert">
+                    Product Pending
+                    </div>
+                @endif
+            </div>
+        </div>
     </div>
-
-    <div class="col-md-2">
-    {{ $ord['quantity'] }}
     </div>
-
-    <div class="col-md-2">
-    <a href="/admin/user/{{ $use['user_id'] }}">{{$use['name']}}</a>
-    </div>
-
-    <div class="col-md-2">
-    {{ $ord['address'] }}
-    </div>
-
-    <div class="col-md-2">
-        @if ($ord['is_delivered'])
-        <button type="button" class="btn btn-success">delivered</button>
-        @else
-        <button type="button" class="btn btn-warning">pending</button>
-        @endif
-    </div> 
 </div>
 
-@endif
-@endforeach
-<hr></div>
 @endsection

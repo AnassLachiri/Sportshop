@@ -126,9 +126,13 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function deliver($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        $order->is_delivered = TRUE;
+        $order->save();
+
+        return back();
     }
 
     public function orderIndex($id){
@@ -136,16 +140,16 @@ class OrderController extends Controller
         $products = Product::all();
         $orders = Order::all();
         $categories = Category::all();
-        
+
 
         $order = Order::findOrFail($id);
-        $product= Product::findOrFail($order->product_id);
+        $product = Product::findOrFail($order->product_id);
         $user= User::findOrFail($order->user_id);
 
 
 
-        return view('admin-order', ['users' => $users, 'products' => $products, 'orders' => $orders, 'categories' => $categories,'order'=>$order,'prod'=>$product,'use'=>$user]);
-        
+        return view('admin-order', ['users' => $users, 'products' => $products, 'orders' => $orders, 'categories' => $categories,'order'=>$order,'product'=>$product,'user'=>$user]);
+
 
     }
 }

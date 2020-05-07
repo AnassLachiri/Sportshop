@@ -12,11 +12,52 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        $categories = [
+            [
+                'name' => "Football",
+                'created_at' => new DateTime,
+                'updated_at' => null,
+                'image' => 'football.jpg'
+
+            ],[
+                'name' => "Basketball",
+                'created_at' => new DateTime,
+                'updated_at' => null,
+                'image' => 'basketball.jpg'
+
+            ],[
+                'name' => "Calisthenics",
+                'created_at' => new DateTime,
+                'updated_at' => null,
+                'image' => 'calisthenics.jpg'
+
+            ],[
+                'name' => "Bodybuilding",
+                'created_at' => new DateTime,
+                'updated_at' => null,
+                'image' => 'bodybuilding.jpg'
+
+            ],[
+                'name' => "Swimming",
+                'created_at' => new DateTime,
+                'updated_at' => null,
+                'image' => 'swimming.jpg'
+
+            ],[
+                'name' => "Running",
+                'created_at' => new DateTime,
+                'updated_at' => null,
+                'image' => 'running.jpeg'
+
+            ],
+        ];
+
+        DB::table('categories')->insert($categories);
         $cat1 = new Category;
         $cat1->name = "Equipements";
         $cat1->image= 'No_image.jpg';
         $cat1->save();
-        
+
 
 
         $cat2 = new Category;

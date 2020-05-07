@@ -264,3 +264,12 @@ footer {
     margin-left: 10px;
 }
 
+.order-deliver-form{
+    margin: 30px auto;
+}
+
+.order-deliver-form button{
+    width: 100%;
+    padding: 10px
+}
+
