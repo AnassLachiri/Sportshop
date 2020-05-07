@@ -44,7 +44,14 @@
 
 
 <div class="container new-product">
-    <h1 class="new-product-title">Modify products</h1>
+    <h1 class="new-product-title">Modify The Product</h1>
+    <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <img src="/storage/product_images/{{$product->image}}" alt="{{$product->name}}" class="product_modify_img">
+    </div>
+    <div class="col-md-4"></div>
+    </div>
 <form action="/modify/product/" method="POST" enctype="multipart/form-data">
 @csrf
         @if ($message = Session::get('error'))
@@ -93,7 +100,7 @@
     <input type="number" step="any" min="0" class="form-control" id="product-price" placeholder="Product price" name="price" value="{{$product->price}}">
   </div>
   <div class="form-group">
-    <label for="product-image">Product Image ( jpg )</label>
+    <label for="product-image">Product Image</label>
     <input type="file" class="form-control-file" id="product-image" name="image">
   </div>
   <input type="text" name="id" value="{{$product->id}}" style="display: none;">

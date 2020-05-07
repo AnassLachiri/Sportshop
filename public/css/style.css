@@ -273,3 +273,9 @@ footer {
     padding: 10px
 }
 
+.product_modify_img{
+    width: 100%;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+

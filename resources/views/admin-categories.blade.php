@@ -40,7 +40,7 @@
 
 
 
-<h1 class="products-title text-center">All Orders</h1>
+<h1 class="products-title text-center">All Categories</h1>
 
 
 <div class="container">
