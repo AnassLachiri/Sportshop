@@ -7,6 +7,14 @@
             <img src="/storage/product_images/{{$product->image}}" alt="Product">
         </div>
         <div class="col-md-7">
+            @if ($message = Session::get('out_of_stock'))
+            <div class="form-group">
+                <div class="alert alert-danger alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ session('out_of_stock') }}</strong>
+                </div>
+            </div>
+            @endif
             <form action="/product/" method="POST" class="product-info" id="product-form">
             @csrf
             <h3 class="product-title">{{ $product->name }}</h3>

@@ -153,6 +153,11 @@ class ProductController extends Controller
         $quantity = request('quantity');
         $submit = request('submit');
 
+        if($quantity == 0){
+            return back()
+                ->with('out_of_stock', 'This product is out stock for now!!');
+        }
+
         if($user_id == -1){
             return redirect("/product/$product_id");
         }

@@ -7,6 +7,7 @@ use App\Product;
 use App\User;
 use App\Category;
 use App\Order;
+use App\Cart;
 
 class AdminController extends Controller
 {
