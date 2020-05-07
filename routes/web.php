@@ -17,7 +17,6 @@ Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/product/{id}', 'ProductController@show');
 Route::post('/product', 'ProductController@manageSubmit')->middleware('auth');

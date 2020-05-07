@@ -1,0 +1,281 @@
+
+.sportshop-icon {
+    height: 33px;
+  }
+
+.search-bar select {
+  border-radius: 50px 0 0 50px;
+}
+.search-bar input {
+  border-radius: 0;
+}
+.search-bar .btn-outline-success {
+  background-color: #38c172;
+  color: #fff;
+  border-radius: 0 50px 50px 0;
+  margin-right: 20px;
+}
+.search-bar .btn-outline-success:hover {
+  color: #38c172;
+  background-color: #fff;
+}
+footer {
+  background-color: #333;
+  color: #eee;
+  text-align: center;
+  padding: 20px;
+}
+/************** Product styling *********************/
+.product {
+    margin-top: 20px;
+}
+.product img{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.product .product-info{
+    padding: 10px
+}
+.product .product-info select{
+    padding: 3px 10px;
+    background-color: #fff;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+.product .product-info .btn{
+    padding: 10px 50px;
+    margin: 10px 20px;
+}
+/************** Checkout styling *********************/
+.checkout-form{
+    padding: 10px ;
+    margin-top: 20px;
+}
+
+/************** Orders styling *********************/
+
+
+.order{
+    border: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+.order .image{
+    margin: 0;
+}
+
+.order img{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.order .delivered, .order .pending{
+    max-width: 300px;
+    text-align: center;
+}
+
+/************** Category styling *********************/
+
+
+.card-product:after {
+  content: "";
+  display: table;
+  clear: both;
+  visibility: hidden; }
+.card-product .price-new, .card-product .price {
+  margin-right: 5px; }
+.card-product .price-old {
+  color: #999; }
+.card-product .img-wrap {
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+  position: relative;
+  height: 220px;
+  text-align: center; }
+.card-product .img-wrap img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover; }
+  .card-product .info-wrap {
+  overflow: hidden;
+  padding: 15px;
+  border-top: 1px solid #eee;
+  min-height: 110px; }
+.card-product .action-wrap {
+  padding-top: 4px;
+  margin-top: 4px;
+}
+.card-product .bottom-wrap {
+  padding: 15px;
+  border-top: 1px solid #eee; }
+.card-product .title {
+  margin-top: 0; }
+
+
+
+/*********************** Admin Styling ***********************/
+
+.card-counter{
+    box-shadow: 2px 2px 10px #DADADA;
+    margin: 5px;
+    padding: 20px 10px;
+    background-color: #fff;
+    height: 100px;
+    border-radius: 5px;
+    transition: .3s linear all;
+  }
+
+  .card-counter:hover{
+    box-shadow: 4px 4px 20px #DADADA;
+    transition: .3s linear all;
+    cursor: pointer;
+  }
+
+  .card-counter.primary{
+    background-color: #007bff;
+    color: #FFF;
+  }
+
+  .card-counter.danger{
+    background-color: #ef5350;
+    color: #FFF;
+  }
+
+  .card-counter.success{
+    background-color: #66bb6a;
+    color: #FFF;
+  }
+
+  .card-counter.info{
+    background-color: #26c6da;
+    color: #FFF;
+  }
+
+  .card-counter i{
+    font-size: 5em;
+    opacity: 0.2;
+  }
+
+  .card-counter .count-numbers{
+    position: absolute;
+    right: 35px;
+    top: 20px;
+    font-size: 32px;
+    display: block;
+  }
+
+  .card-counter .count-name{
+    position: absolute;
+    right: 35px;
+    top: 65px;
+    font-style: italic;
+    text-transform: capitalize;
+    opacity: 0.5;
+    display: block;
+    font-size: 18px;
+  }
+
+
+/********************* welcome Products ****************************/
+
+.welcome-header{
+    width: 100%;
+    height: 400px;
+    background-image: url('/img/welcome_img/header.jpg');
+    background-size: cover;
+    margin-top: -30px;
+    text-align: center;
+}
+
+.welcome-header .blackish{
+    background-color: rgba(0, 0, 0, .7);
+    width: 100%;
+    height: 100%;
+    color: #EEE;
+}
+
+.welcome-header .blackish .welcome-text{
+    padding-top: 150px;
+    font-size: 70px;
+}
+
+
+.card-product .img-cat{
+    height: 330px;
+}
+
+.card-product .img-cat .whitish{
+    background-color: rgba(255, 255, 255, .7);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding: 130px 0;
+}
+
+.card-product .img-cat .whitish a{
+    text-decoration: none;
+    font-size: 50px;
+    font-weight: bolder;
+    color: #333;
+}
+
+.category-name a{
+    color: #222;
+}
+
+
+/**************************** Admin products styling ***************************/
+
+.products-title{
+    margin: 30px auto 10px;
+}
+.admin-product .product-img{
+    background-size: cover;
+}
+
+.admin-product .product-btns{
+    padding-top: 20px;
+
+}
+
+.admin-product .btn{
+    padding: 10px;
+    margin: 10px;
+}
+
+.new-product{
+    margin: 40px auto;
+}
+
+.new-product-title{
+    margin: 40px auto 20px;
+    text-align: center;
+}
+
+/************************ Admin orders page *****************************/
+
+.admin-order-header{
+    padding-top: 20px;
+}
+
+.admin-user button{
+    margin-left: 10px;
+}
+
+.order-deliver-form{
+    margin: 30px auto;
+}
+
+.order-deliver-form button{
+    width: 100%;
+    padding: 10px
+}
+
+.product_modify_img{
+    width: 100%;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+
