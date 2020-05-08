@@ -59,8 +59,8 @@
                 {{ $product->description }}
                 </p>
                 <p class="card-text">
-                Address : {{ $product->address }}<br>
-                Country : {{ $product->country }}<br>
+                Address : {{ $order->address }}<br>
+                Country : {{ $order->country }}<br>
                 Quantity wanted : {{ $order->quantity }}<br>
                 Total price : {{ ($order->quantity * $product->price) }}$<br>
                 User : {{ $user->name }}<br>

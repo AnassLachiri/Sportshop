@@ -49648,14 +49648,50 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 0:
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/main.scss":
+/*!**********************************!*\
+  !*** ./resources/sass/main.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/style.scss":
 /*!***********************************!*\
-  !*** multi ./resources/js/app.js ***!
+  !*** ./resources/sass/style.scss ***!
   \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 0:
+/*!********************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/main.scss ./resources/sass/style.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/solox/Desktop/PHP & More/laravel/Sportshop/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/solox/Desktop/PHP & More/laravel/Sportshop/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/solox/Desktop/PHP & More/laravel/Sportshop/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/solox/Desktop/PHP & More/laravel/Sportshop/resources/sass/main.scss */"./resources/sass/main.scss");
+module.exports = __webpack_require__(/*! /home/solox/Desktop/PHP & More/laravel/Sportshop/resources/sass/style.scss */"./resources/sass/style.scss");
 
 
 /***/ })
