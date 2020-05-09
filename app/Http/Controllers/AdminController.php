@@ -17,26 +17,46 @@ class AdminController extends Controller
         $products = Product::all();
         $orders = Order::all();
         $categories = Category::all();
+
         $products_by_category = [];
-        foreach($categories as $category){
-            $products_by_category[$category->id] = [
-                'progress' => round( (count( Product::where('category_id', $category->id)->get() ) / count($products)) * 100),
-                'name' => $category->name
-            ];
+        if(count($products) != 0){
+            foreach($categories as $category){
+                $products_by_category[$category->id] = [
+                    'progress' => round( (count( Product::where('category_id', $category->id)->get() ) / count($products)) * 100),
+                    'name' => $category->name
+                ];
+            }
+        }else{
+            foreach($categories as $category){
+                $products_by_category[$category->id] = [
+                    'progress' => 100,
+                    'name' => $category->name
+                ];
+            }
         }
 
 
+
         $orders_by_state = [];
-
-        $orders_by_state[0] = [
-            'progress' => round( (count( Order::where('is_delivered', True)->get() ) / count($orders)) * 100),
-            'state' => "Delivered"
-        ];
-
-        $orders_by_state[1] = [
-            'progress' => round( (count( Order::where('is_delivered', False)->get() ) / count($orders)) * 100),
-            'state' => "Pending"
-        ];
+        if(count($orders) != 0){
+            $orders_by_state[0] = [
+                'progress' => round( (count( Order::where('is_delivered', True)->get() ) / count($orders)) * 100),
+                'state' => "Delivered"
+            ];
+            $orders_by_state[1] = [
+                'progress' => round( (count( Order::where('is_delivered', False)->get() ) / count($orders)) * 100),
+                'state' => "Pending"
+            ];
+        }else{
+            $orders_by_state[0] = [
+                'progress' => 100,
+                'state' => "Delivered"
+            ];
+            $orders_by_state[1] = [
+                'progress' => 100,
+                'state' => "Pending"
+            ];
+        }
 
 
 
