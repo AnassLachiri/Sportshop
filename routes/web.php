@@ -57,3 +57,5 @@ route::get('/admin/order/{id}', 'OrderController@orderIndex')->middleware('admin
 route::post('/delete/order/{id}', 'OrderController@deliver')->middleware('admin');
 
 route::get('/search', 'ProductController@searchIndex');
+
+route::post('/comment', 'CommentController@store')->middleware('auth');

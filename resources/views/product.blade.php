@@ -46,4 +46,34 @@
         </div>
     </div>
 </div>
+<br><br>
+<div class="container"><hr></div>
+<br><br>
+
+<div class="container comments">
+    <div class="card">
+        <h5 class="card-header"><i class="fa fa-comments" aria-hidden="true"></i> Comments Box - Write your opinion about the product</h5>
+        @auth
+        <div class="card-body">
+            <form action="/comment/" method="POST" class="input-group">
+            @csrf
+                <input type="text" name="content" class="form-control" placeholder="Place your comment here" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Comment</button>
+                </div>
+            </form>
+        </div>
+        @endauth
+
+        @foreach($comments as $comment)
+        <div class="card-body">
+            <hr style="margin-top: 0;padding-top: 0;">
+            <p class="card-text" style="margin-left: 20px;margin-right: 10px; font-size: 20px;"> <span style="font-weight: bold; font-size: 25px">~</span> {{ $comment->content }}</p>
+            <span style="padding-left: 50px;"><i class="fa fa-user" aria-hidden="true" style="margin-left: 50px; margin-right: 10px"></i> By <strong>{{ $comment->username }}</strong> , {{ $comment->created_at }}</span>
+        </div>
+        @endforeach
+    </div>
+</div>
 @endsection

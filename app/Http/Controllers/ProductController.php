@@ -8,6 +8,8 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use DateTime;
+use App\Comment;
+use App\User;
 
 class ProductController extends Controller
 {
@@ -133,8 +135,13 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
+        $comments = Comment::where('product_id', $id)->orderBy('created_at', 'desc')->get();
+        foreach($comments as $comment){
+            $username = User::findOrFail($comment->user_id)->name;
+            $comment['username'] = $username;
+        }
 
-        return view('product', ['product' => $product]);
+        return view('product', ['product' => $product, 'comments' => $comments]);
     }
 
     public function manageSubmit()
