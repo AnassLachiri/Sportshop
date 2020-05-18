@@ -78,7 +78,7 @@ class CategoryController extends Controller
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $filename .'_'.time().'.'.$extension;
             $path = $request->file('image')->storeAs('public/category_images', $fileNameToStore);
-            $product->image = $fileNameToStore;
+            $category->image = $fileNameToStore;
         }
 
         $category->name = request('name');
