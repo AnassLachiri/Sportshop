@@ -57,6 +57,7 @@
         <div class="card-body">
             <form action="/comment/" method="POST" class="input-group">
             @csrf
+                <input type="number" min="0" max="5" step="1"  placeholder=" Rating" style="width: 100px" name="rating">
                 <input type="text" name="content" class="form-control" placeholder="Place your comment here" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -70,8 +71,24 @@
         @foreach($comments as $comment)
         <div class="card-body">
             <hr style="margin-top: 0;padding-top: 0;">
-            <p class="card-text" style="margin-left: 20px;margin-right: 10px; font-size: 20px;"> <span style="font-weight: bold; font-size: 25px">~</span> {{ $comment->content }}</p>
-            <span style="padding-left: 50px;"><i class="fa fa-user" aria-hidden="true" style="margin-left: 50px; margin-right: 10px"></i> By <strong>{{ $comment->username }}</strong> , {{ $comment->created_at }}</span>
+            <p class="card-text" style="margin-left: 20px;margin-right: 10px; font-size: 20px;">
+            @if($comment->rating >= 5)
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            @else
+                @for($i = 0; $i < $comment->rating; $i++)
+                <span class="fa fa-star checked"></span>
+                @endfor
+                @for($i = $comment->rating; $i < 5; $i++)
+                <span class="fa fa-star"></span>
+                @endfor
+            @endif
+
+            <span style="font-weight: bold; font-size: 25px">&nbsp;~&nbsp;</span>&nbsp; {{ $comment->content }}</p>
+            <span style="padding-left: 50px;"><i class="fa fa-user" aria-hidden="true" style="margin-left: 50px; margin-right: 10px"></i> By <strong>{{ $comment->username }}</strong> , {{ $comment->created_at }} </span>
         </div>
         @endforeach
     </div>

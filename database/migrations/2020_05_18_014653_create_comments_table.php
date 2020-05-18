@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->string('content');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('product_id');
+            $table->unsignedInteger('rating');
             $table->timestamps();
         });
     }

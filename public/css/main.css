@@ -17,3 +17,6 @@
   height: 80px;
 }
 
+.checked {
+    color: orange;
+  }
