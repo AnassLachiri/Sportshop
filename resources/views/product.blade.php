@@ -127,7 +127,7 @@
                     <div class="col-md-1">
                         <form action="/delete/comment/{{ $comment->id }}" method="POST">
                             @csrf
-                            <button type="submit" class="comment-remove-button"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            <button type="submit" onclick="return confirm('Are you sure?')" class="comment-remove-button"><i class="fa fa-times" aria-hidden="true"></i></button>
                         </form>
                     </div>
                     @else
